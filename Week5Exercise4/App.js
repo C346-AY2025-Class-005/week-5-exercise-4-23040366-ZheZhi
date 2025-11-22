@@ -1,94 +1,113 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, ScrollView, View, FlatList, SectionList, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, SectionList, TouchableOpacity, Image, Alert } from 'react-native';
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 const datasource = [
-  {data: [
-    {key: 'Zapdos', image: {uri: 'https://dz3we2x72f7ol.cloudfront.net/expansions/151/en-us/SV3pt5_EN_145.png'}},
-    {key: 'Pikachu', image: {uri: 'https://dz3we2x72f7ol.cloudfront.net/expansions/151/en-us/SV3pt5_EN_25.png'}},
-  ], title: "ELECTRIC", bgcolor: 'gold', icon: 'bolt'},
-  {data: [
-    {key: 'Blastoise', image: {uri: 'https://dz3we2x72f7ol.cloudfront.net/expansions/151/en-us/SV3pt5_EN_9.png'}},
-    {key: 'Squirtle', image: {uri: 'https://dz3we2x72f7ol.cloudfront.net/expansions/151/en-us/SV3pt5_EN_7.png'}},
-  ], title: "WATER", bgcolor: 'skyblue', icon: 'droplet'}
+  {
+    title: "'Shonen'",
+    bgcolor: '#ffe08a',
+    icon: 'fire-flame-curved',
+    data: [
+      {
+        key: 'Naruto',
+        image: { uri: 'https://m.media-amazon.com/images/M/MV5BZTNjOWI0ZTAtOGY1OS00ZGU0LWEyOWYtMjhkYjdlYmVjMDk2XkEyXkFqcGc@._V1_.jpg' },
+      },
+      {
+        key: 'Attack on Titan',
+        image: { uri: 'https://m.media-amazon.com/images/M/MV5BZjliODY5MzQtMmViZC00MTZmLWFhMWMtMjMwM2I3OGY1MTRiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg' },
+      },
+    ],
+  },
+  {
+    title: "'Slice of Life'",
+    bgcolor: '#cce6ff',
+    icon: 'heart',
+    data: [
+      {
+        key: 'Your Name',
+        image: { uri: 'https://m.media-amazon.com/images/M/MV5BOTkzMGIyYzAtMDQyYi00OTkxLWI2ZGMtODNmYjMyMWM3ZGY1XkEyXkFqcGc@._V1_.jpg' },
+      },
+      {
+        key: 'Violet Evergarden',
+        image: { uri: 'https://m.media-amazon.com/images/M/MV5BMWUwNDFiNjQtYjQ0MC00MTcxLWE0MGQtNTdkYTlhZGU2NDFmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg' },
+      },
+    ],
+  },
 ];
 
-const renderItem = ({item, section}) => {
+const renderItem = ({ item, section }) => {
   let img = null;
   if (item.image) {
     img = (
-      <Image style={styles.card} source={item.image} />
+      <Image style={styles.poster} source={item.image} />
     );
   }
-  return(
-    <TouchableOpacity style={styles.opacityStyle} >
-      <View style={[styles.row, {backgroundColor: section.bgcolor}]}>
-        <Text style={styles.textStyle} >{item.key}</Text>
+
+  return (
+    <TouchableOpacity
+      style={styles.itemTouchable}
+      onPress={() => Alert.alert(item.key, section.title + ' anime selected')}
+    >
+      <View style={[styles.row, { backgroundColor: section.bgcolor }]}>
+        <Text style={styles.animeTitle}>{item.key}</Text>
         {img}
       </View>
     </TouchableOpacity>
-  )
+  );
 };
 
 const App = () => {
   return (
-    <View style={{flex: 1}}>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttontext}>ADD POKEMON</Text>
-        </TouchableOpacity>
-      </View>
-      <SectionList
-      style = {{flex: 1}}
-      contentContainerStyle = {{padding: 20}}
-      sections={datasource}
-      renderItem ={renderItem}
-      renderSectionHeader = {({section:{title, bgcolor, icon}}) => (
-        <Text style={[styles.headertext, {backgroundColor: bgcolor}]}>
-          <FontAwesome6 name={icon} size={20}/>{title}</Text>
+    <View style={styles.container}>
+      <Text style={styles.appTitle}>Anime List</Text>
 
-)}/>
+      <SectionList
+        style={{ flex: 1 }}
+        contentContainerStyle={styles.listContent}
+        sections={datasource}
+        renderItem={renderItem}
+        SectionSeparatorComponent={() => <View style={{ height: 20 }} />}
+      />
+
+      <StatusBar style="auto" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  textStyle: {
-    fontSize: 15,
-    margin: 10,
-    textAlign: 'left',
+  container: {
+    flex: 1,
+    backgroundColor: 'whitesmoke',
+    paddingTop: 40,
+  },
+  appTitle: {
+    fontSize: 24,
     fontWeight: 'bold',
-    alignSelf: 'center'
+    textAlign: 'center',
+    marginBottom: 10,
   },
-  opacityStyle: {
-    borderWidth: 1
+  listContent: {
+    paddingHorizontal: 20,
+    paddingBottom: 20,
   },
-  headertext: {
+  headerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    paddingVertical: 6,
+    width: '100%',
+  },
+  headerIcon: {
+    marginRight: 8,
+  },
+  headerText: {
     fontSize: 20,
-    marginTop: 10,
-    padding: 5,
-    textAlign: 'center',
     fontWeight: 'bold',
-    borderWidth: 2,
-  },
-  button: {
-    backgroundColor: 'skyblue',
-    marginTop: 30,
-    marginBottom: 25,
-    alignSelf: 'center',
-    width: '90%',
-    borderWidth: 2,
-    borderRadius: 5,
-    paddingVertical: 5,
-  },
-  buttontext: {
     textAlign: 'center',
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: 'white',
   },
-  buttonContainer: {
-    borderWidth: 2,
+  itemTouchable: {
+    borderWidth: 1,
   },
   row: {
     flexDirection: 'row',
@@ -96,10 +115,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
   },
-  card: {
-    width: 200,
-    height: 290,
-    resizeMode: 'contain'
+  animeTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    maxWidth: '40%',
+  },
+  poster: {
+    width: 120,
+    height: 180,
+    resizeMode: 'contain',
   },
 });
 
