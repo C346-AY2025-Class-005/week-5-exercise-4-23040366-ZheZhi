@@ -36,6 +36,22 @@ const renderItem = ({item, index, section}) => {
 };
 
 const Home = ({navigation}) => {
+
+  const renderItem = ({item, index, section}) => {
+    return (
+    <TouchableOpacity style={styles.opacityStyle}
+    onPress ={()=>
+      {
+        navigation.navigate("Edit", {index:index, type:section.title, key:item.key});
+      }
+    }>
+      <Text style={styles.textStyle}>{item.key}</Text>
+    </TouchableOpacity>
+    );
+  };
+
+
+  
    return (
     <View style={{flex:1, margin: 10, marginTop: 30}}>
       <StatusBar/>

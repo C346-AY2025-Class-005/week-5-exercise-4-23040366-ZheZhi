@@ -4,7 +4,7 @@ import {Picker} from '@react-native-picker/picker';
 import { useState } from 'react';
 import { datasource } from './Data.js';
 
-const Edit = (navigation, route) => {
+const Edit = ({navigation, route}) => {
     const [letter, setLetter] = useState(route.params.key);
     return(
         <View>
