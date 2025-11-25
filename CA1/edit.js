@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, TextInput, Button, Alert } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import { useState } from 'react';
-import { datasource } from './Data.js';
+import { datasource } from './data.js';
 
 const edit = ({navigation, route}) => {
     const [letter, setLetter] = useState(route.params.key);
