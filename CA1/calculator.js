@@ -1,6 +1,6 @@
 import React from 'react';
 import {StatusBar, Button, SectionList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {datasource} from './data.js';
+import {datasource} from './Data.js';
 
 
 
@@ -21,9 +21,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const calculator = ({navigation}) => {
+const Calculator = ({navigation}) => {
 
-  const renderItem = ({item, index, section}) => {
+  const renderItem = ({item, index, section, grade}) => {
     return (
     <TouchableOpacity style={styles.opacityStyle}
     onPress ={()=>
@@ -50,4 +50,4 @@ const calculator = ({navigation}) => {
   );
 };
 
-export default calculator;
+export default Calculatoralculator;
