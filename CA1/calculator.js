@@ -31,7 +31,7 @@ const calculator = ({navigation}) => {
         navigation.navigate("Edit", {index:index, type:section.title, key:item.key, grade:item.grade});
       }
     }>
-      <Text style={styles.textStyle}>{item.key}</Text>
+      <Text style={styles.textStyle}>{item.key}{item.grade}</Text>
     </TouchableOpacity>
     );
   };
@@ -39,7 +39,7 @@ const calculator = ({navigation}) => {
    return (
     <View style={{flex:1, margin: 10, marginTop: 30}}>
       <StatusBar/>
-	<Button title='Add Letter' onPress={()=>{navigation.navigate("Add")}}/>
+	<Button title='Add Letter' onPress={()=>{navigation.navigate("add")}}/>
       <SectionList sections={datasource} renderItem={renderItem} 
       renderSectionHeader={({section:{title,bgcolor}})=>(
       <Text style={[styles.headerText,{backgroundColor:bgcolor}]}>
