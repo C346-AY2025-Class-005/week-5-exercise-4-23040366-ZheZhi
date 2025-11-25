@@ -24,8 +24,11 @@ const Edit = ({navigation, route}) => {
                 if (route.params.type === 'Vowels') {
                     indexnum = 0;
                 }
-                datasource[indexnum].data.splice(route.params.index, 1);
-                navigation.navigate("Home");
+                Alert.alert('Are you sure?', '',
+                    [{text:'Yes', onPress: () => {
+                        datasource[indexnum].data.splice(route.params.index, 1);
+                        navigation.navigate("Home");}
+                      }, {text:'No'}])
             }}
             />
         </View>
