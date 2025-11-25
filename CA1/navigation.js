@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, createStackNavigator} from '@react-navigation/native-stack';
 import Calculator from './Calculator.js';
 import Add from './Add.js';
+import Edit from './Edit.js';
 
 
 
