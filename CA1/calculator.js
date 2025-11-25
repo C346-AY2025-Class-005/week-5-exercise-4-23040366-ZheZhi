@@ -31,7 +31,7 @@ const Calculator = ({navigation}) => {
         navigation.navigate("Edit", {index:index, type:section.title, key:item.key, grade:item.grade});
       }
     }>
-      <Text style={styles.textStyle}>{item.key}{item.grade}</Text>
+      <Text style={styles.textStyle}>{item.key}-{item.grade}</Text>
     </TouchableOpacity>
     );
   };
