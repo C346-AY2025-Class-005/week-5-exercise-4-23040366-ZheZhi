@@ -4,16 +4,24 @@ import {Picker} from '@react-native-picker/picker';
 import { useState } from 'react';
 import { datasource } from './data.js';
 
-const Add = () => {
+const Add = ({Navigation}) => {
     const [mod, setMod] = useState('');
     const [grade, setGrade] = useState('');
     return(
         <View>
-            <Text>Letter:</Text>
-            <TextInput style={{borderWidth: 1}} onChangeText={setLetter} />
+            <Text>Module Name:</Text>
+            <TextInput style={{borderWidth: 1}} onChangeText={setMod} />
+            <Text>Grade:</Text>
             <Picker onValueChange={(value) => setType(value)}>
-                <Picker.Item label="Vowels" value="Vowels" />
-                <Picker.Item label="Consonants" value="Consonants" />
+                <Picker.Item label="grade" value="A" />
+                <Picker.Item label="grade" value="B+" />
+                <Picker.Item label="grade" value="B" />
+                <Picker.Item label="grade" value="C+" />
+                <Picker.Item label="grade" value="C" />
+                <Picker.Item label="grade" value="D+" />
+                <Picker.Item label="grade" value="D" />
+                <Picker.Item label="grade" value="E" />
+                <Picker.Item label="grade" value="F" />
             </Picker>
             <Button title='Submit'
             onPress={()=>{
