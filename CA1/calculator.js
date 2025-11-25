@@ -39,7 +39,7 @@ const Calculator = ({navigation}) => {
    return (
     <View style={{flex:1, margin: 10, marginTop: 30}}>
       <StatusBar/>
-	<Button title='Add Letter' onPress={()=>{navigation.navigate("add")}}/>
+	<Button title='Add Module' onPress={()=>{navigation.navigate("Add")}}/>
       <SectionList sections={datasource} renderItem={renderItem} 
       renderSectionHeader={({section:{title,bgcolor}})=>(
       <Text style={[styles.headerText,{backgroundColor:bgcolor}]}>
@@ -50,4 +50,4 @@ const Calculator = ({navigation}) => {
   );
 };
 
-export default Calculatoralculator;
+export default Calculator;
