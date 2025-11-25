@@ -28,7 +28,7 @@ const Edit = ({navigation, route}) => {
                     [{text:'Yes', onPress: () => {
                         datasource[indexnum].data.splice(route.params.index, 1);
                         navigation.navigate("Home");}
-                      }, {text:'No'}])
+                    }, {text:'No'}])
             }}
             />
         </View>
