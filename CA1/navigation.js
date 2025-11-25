@@ -15,7 +15,7 @@ const Navigation = () => {
             <Stack.Navigator screenOptions={{headerShown: false}}>
                 <Stack.Screen name="Home" component={Calculator} />
                 <Stack.Screen name="Add" component={Add} />
-                <Stack.Screen name="Edit" component={edit} />
+                <Stack.Screen name="Edit" component={Edit} />
             </Stack.Navigator>
         </NavigationContainer>
     );
