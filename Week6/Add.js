@@ -4,7 +4,7 @@ import {Picker} from '@react-native-picker/picker';
 import { useState } from 'react';
 import { datasource } from './Data.js';
 
-const Add = ({navigation}) => {
+const Add = () => {
     const [letter, setLetter] = useState('');
     const [type, setType] = useState('Vowels');
     return(
@@ -23,7 +23,7 @@ const Add = ({navigation}) => {
                     indexnum = 0;
                 }
                 datasource[indexnum].data.push(item);
-                navigation.navigate("Home");
+                Navigation.navigate("Home");
             }
         }
         />

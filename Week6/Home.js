@@ -26,11 +26,11 @@ const renderItem = ({item, index, section}) => {
   <TouchableOpacity style={styles.opacityStyle}
   onPress ={()=>
     {
-      navigation.navigate("Edit", {index:index, type:section.title, key:item.key});
+      navigation.navigate("Edit", {index:index, type:section.title, key:item.key, grade:item.grade});
     }
   }
   >
-  <Text style={styles.textStyle}>{item.key}</Text>
+  <Text style={styles.textStyle}>{item.key}{item}</Text>
   </TouchableOpacity>
   );
 };
