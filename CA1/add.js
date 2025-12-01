@@ -4,7 +4,7 @@ import {Picker} from '@react-native-picker/picker';
 import { useState } from 'react';
 import { datasource } from './Data.js';
 
-const Add = ({Navigation}) => {
+const Add = ({navigation}) => {
     const [mod, setMod] = useState('');
     const [grade, setGrade] = useState('');
     return(
@@ -12,26 +12,25 @@ const Add = ({Navigation}) => {
             <Text>Module Name:</Text>
             <TextInput style={{borderWidth: 1}} onChangeText={setMod} />
             <Text>Grade:</Text>
-            <Picker onValueChange={(value) => setType(value)}>
-                <Picker.Item label="grade" value="A" />
-                <Picker.Item label="grade" value="B+" />
-                <Picker.Item label="grade" value="B" />
-                <Picker.Item label="grade" value="C+" />
-                <Picker.Item label="grade" value="C" />
-                <Picker.Item label="grade" value="D+" />
-                <Picker.Item label="grade" value="D" />
-                <Picker.Item label="grade" value="E" />
-                <Picker.Item label="grade" value="F" />
+            <Picker onValueChange={(value) => setGrade(value)}>
+                <Picker.Item label="A" value="A" />
+                <Picker.Item label="B+" value="B+" />
+                <Picker.Item label="B" value="B" />
+                <Picker.Item label="C+" value="C+" />
+                <Picker.Item label="C" value="C" />
+                <Picker.Item label="D+" value="D+" />
+                <Picker.Item label="D" value="D" />
+                <Picker.Item label="E" value="E" />
+                <Picker.Item label="F" value="F" />
             </Picker>
             <Button title='Submit'
             onPress={()=>{
-                let item = {key: mod, grade: grade};
-                let indexnum = 1;
-                if (type === 'Vowels') {
-                    indexnum = 0;
-                }
-                datasource[indexnum].data.push(item);
-                Navigation.navigate("Home");
+            if (mod === '' || grade === '') {
+                Alert.alert('Please fill in all fields');
+                return;
+            }
+                datasource[0].data.push({key: mod, grade: grade});
+                navigation.navigate("Home");
             }
         }
         />
